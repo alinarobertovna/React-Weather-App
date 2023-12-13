@@ -35,22 +35,18 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
         </div>
       </form>
 
-      {/* Celsius/Fahrenheit toggle */}
-      <div className="mb-4">
-        <button onClick={toggleTempUnit} className="text-gray-600 text-sm">
+      {/* Weather details */}
+      <div className="flex flex-col items-center justify-center text-gray-700">
+        {/* Location row with temperature unit toggle */}
+      <div className="flex justify-between items-center w-full mb-4">
+        <div className="flex items-center">
+          <WiDaySunny className="text-yellow-400 text-3xl mr-3" />
+          <span className="font-semibold text-lg md:text-2xl">{cityData.name}, {cityData.sys.country}</span>
+        </div>
+        <button onClick={toggleTempUnit} className="text-gray-600 text-xs md:text-sm">
           {isCelsius ? '°F' : '°C'}
         </button>
       </div>
-
-      {/* Weather details */}
-      <div className="flex flex-col items-center justify-center text-gray-700">
-        {/* Location row */}
-        <div className="flex flex-col md:flex-row items-center justify-between w-full mb-4">
-          <div className="flex items-center">
-            <WiDaySunny className="text-yellow-400 text-3xl mr-3" />
-            <span className="font-semibold text-lg md:text-2xl">{cityData.name}, {cityData.sys.country}</span>
-          </div>
-        </div>
 
         {/* Temperature & Date row */}
         <div className="my-4 md:my-6 text-center">
