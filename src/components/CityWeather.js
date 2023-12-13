@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { WiDaySunny, WiRain, WiStrongWind, WiHumidity, WiBarometer } from 'react-icons/wi';
 import { BsSearch } from 'react-icons/bs';
 
-const CityWeather = ({ cityData, handleSubmit }) => {
+const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
   const [cityInput, setCityInput] = useState('');
 
   const handleCityInputChange = (event) => {
@@ -11,7 +11,7 @@ const CityWeather = ({ cityData, handleSubmit }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    handleSubmit(cityInput); 
+    handleSubmit(cityInput);
   };
 
   return (
@@ -35,6 +35,13 @@ const CityWeather = ({ cityData, handleSubmit }) => {
         </div>
       </form>
 
+      {/* Celsius/Fahrenheit toggle */}
+      <div className="mb-4">
+        <button onClick={toggleTempUnit} className="text-gray-600 text-sm">
+          {isCelsius ? '°F' : '°C'}
+        </button>
+      </div>
+
       {/* Weather details */}
       <div className="flex flex-col items-center justify-center text-gray-700">
         {/* Location row */}
@@ -48,7 +55,7 @@ const CityWeather = ({ cityData, handleSubmit }) => {
         {/* Temperature & Date row */}
         <div className="my-4 md:my-6 text-center">
           <span className="text-gray-800 font-bold text-6xl md:text-9xl">{Math.round(cityData.main.temp)}</span>
-          <span className="text-gray-800 font-semibold text-xl md:text-2xl">°C</span>
+          <span className="text-gray-800 font-semibold text-xl md:text-2xl">{isCelsius ? '°C' : '°F'}</span>
           <p className="text-gray-600 text-md md:text-lg">Today</p>
         </div>
 
@@ -61,7 +68,7 @@ const CityWeather = ({ cityData, handleSubmit }) => {
           </div>
           <div className="flex flex-col items-center">
             <WiStrongWind className="text-teal-400 text-3xl md:text-4xl" />
-            <span className="text-xs md:text-sm mt-2">Wind: {cityData.wind.speed} m/s</span>
+            <span className="text-xs md:text-sm mt-2">Wind: {cityData.wind.speed} {isCelsius ? 'm/s' : 'mph'}</span>
           </div>
           <div className="flex flex-col items-center">
             <WiHumidity className="text-blue-400 text-3xl md:text-4xl" />
@@ -69,7 +76,7 @@ const CityWeather = ({ cityData, handleSubmit }) => {
           </div>
           <div className="flex flex-col items-center">
             <WiBarometer className="text-purple-400 text-3xl md:text-4xl" />
-            <span className="text-xs md:text-sm mt-2">Pressure: {cityData.main.pressure} hPa</span>
+            <span className="text-xs md:text-sm mt-2">Pressure: {isCelsius ? cityData.main.pressure + ' hPa' : (cityData.main.pressure * 0.02953).toFixed(2) + ' inHg'}</span>
           </div>
         </div>
       </div>

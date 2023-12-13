@@ -3,13 +3,16 @@ import axios from 'axios';
 import CityWeather from './CityWeather';
 
 function WeatherApp() {
+  const [city, setCity] = useState('Toronto'); // Default city
   const [weatherData, setWeatherData] = useState(null);
-  const apiKey = '0cd2401e4ceeecce944c9b73fb1630e9';
+  const [isCelsius, setIsCelsius] = useState(true);
+  const apiKey = '0cd2401e4ceeecce944c9b73fb1630e9'; // Replace with your API key
 
-  const fetchWeatherData = async (cityName) => {
+  const fetchWeatherData = async (cityName, useMetric) => {
     try {
+      const unit = useMetric ? 'metric' : 'imperial';
       const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${unit}`
       );
       setWeatherData(response.data);
     } catch (error) {
@@ -18,17 +21,28 @@ function WeatherApp() {
   };
 
   useEffect(() => {
-    fetchWeatherData('Toronto'); 
-  }, []);
+    fetchWeatherData(city, isCelsius); 
+  }, [city, isCelsius]); 
+
+  const toggleTempUnit = () => {
+    setIsCelsius(!isCelsius);
+  };
 
   const handleSubmit = (cityInput) => {
-    fetchWeatherData(cityInput); 
+    setCity(cityInput);
   };
 
   return (
     <div className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: 'url(https://example.com/background.jpg)' }}>
       <div className="max-w-4xl mx-auto">
-        {weatherData && <CityWeather cityData={weatherData} handleSubmit={handleSubmit} />}
+        {weatherData && (
+          <CityWeather 
+            cityData={weatherData} 
+            handleSubmit={handleSubmit} 
+            isCelsius={isCelsius} 
+            toggleTempUnit={toggleTempUnit}
+          />
+        )}
       </div>
     </div>
   );
