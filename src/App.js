@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <WeatherApp />
-      {/* Добавьте дополнительные компоненты WeatherApp для других городов */}
     </div>
   );
 }
