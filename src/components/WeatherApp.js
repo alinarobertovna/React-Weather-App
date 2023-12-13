@@ -33,8 +33,8 @@ function WeatherApp() {
   };
 
   return (
-    <div className="bg-cover bg-center bg-no-repeat min-h-screen flex flex-col items-center justify-center" style={{ backgroundImage: 'url(https://example.com/background.jpg)' }}>
-      <div className="max-w-4xl mx-auto">
+    <div className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat">
+       <div className="max-w-4xl mx-auto">
         {weatherData && (
           <CityWeather 
             cityData={weatherData} 
