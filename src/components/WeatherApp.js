@@ -6,7 +6,8 @@ function WeatherApp() {
   const [city, setCity] = useState('Toronto'); // Default city
   const [weatherData, setWeatherData] = useState(null);
   const [isCelsius, setIsCelsius] = useState(true);
-  const apiKey = '0cd2401e4ceeecce944c9b73fb1630e9'; // Replace with your API key
+  const apiKey = '0cd2401e4ceeecce944c9b73fb1630e9'; 
+  const [error, setError] = useState('');
 
   const fetchWeatherData = async (cityName, useMetric) => {
     try {
@@ -15,8 +16,10 @@ function WeatherApp() {
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=${unit}`
       );
       setWeatherData(response.data);
+      setError(''); // Clear any existing error
     } catch (error) {
-      console.error('Error fetching weather data:', error);
+      setError('City not found. Please try again.'); // Set error message on failure
+      setWeatherData(null); // Reset weather data on failure
     }
   };
 
@@ -34,15 +37,14 @@ function WeatherApp() {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-cover bg-center bg-no-repeat">
-       <div className="max-w-4xl mx-auto">
-        {weatherData && (
-          <CityWeather 
-            cityData={weatherData} 
-            handleSubmit={handleSubmit} 
-            isCelsius={isCelsius} 
-            toggleTempUnit={toggleTempUnit}
-          />
-        )}
+      <div className="max-w-4xl mx-auto">
+        <CityWeather 
+          cityData={weatherData} 
+          handleSubmit={handleSubmit} 
+          isCelsius={isCelsius} 
+          toggleTempUnit={toggleTempUnit}
+          error={error}
+        />
       </div>
     </div>
   );
