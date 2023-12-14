@@ -42,26 +42,29 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   };
 
   return (
-    <div className="relative bg-white bg-opacity-80 rounded-lg shadow-lg overflow-hidden w-full p-4 lg:max-w-3xl lg:mx-auto">
+    <div className="relative bg-white bg-opacity-75 rounded-lg shadow-lg overflow-hidden w-full p-4 lg:max-w-3xl lg:mx-auto">
       {/* Search bar row */}
-      <form onSubmit={handleFormSubmit} className="mb-4 w-full">
-        <div className="flex flex-col md:flex-row">
-          <input
-            type="text"
-            value={cityInput}
-            onChange={handleCityInputChange}
-            placeholder="Enter city"
-            className="p-2 border border-gray-300 rounded-t-lg md:rounded-l-lg md:rounded-tr-none flex-grow"
-          />
-          <button type="submit" className="bg-blue-500 text-white p-2 rounded-b-lg md:rounded-r-lg md:rounded-bl-none">
-            <BsSearch />
-          </button>
-        </div>
-      </form>
+    <form onSubmit={handleFormSubmit} className="mb-4 w-full">
+      <div className="relative">
+      <input
+      type="text"
+      value={cityInput}
+      onChange={handleCityInputChange}
+      placeholder="Enter city"
+      className="pl-2 pr-10 py-2 border border-gray-300 rounded-lg w-full"
+      />
+      <button
+      type="submit"
+      className="absolute inset-y-0 right-0 bg-blue-500 text-white px-3 rounded-r-lg"
+      >
+      <BsSearch />
+      </button>
+    </div>
+  </form>
 
       {/* Display Error Message */}
       {error && <div className="flex items-center justify-center"> <BsExclamationCircleFill className="mr-2" /> {error}</div>}
-
+      
       {/* Weather details, rendered only if cityData is available */}
       {cityData && !error && (
         <div className="text-gray-700">
