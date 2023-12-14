@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { WiRain, WiStrongWind, WiHumidity, WiMoonAltNew } from 'react-icons/wi';
+import { WiRain, WiStrongWind, WiHumidity, WiMoonAltNew, WiSunrise, WiCloud } from 'react-icons/wi';
 import { BsSearch, BsGeoAlt } from 'react-icons/bs';
 
 const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
@@ -18,15 +18,9 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
     if (typeof timezoneOffsetInSeconds !== 'number') {
       throw new Error('timezoneOffsetInSeconds must be a number representing the offset in seconds');
     }
-  
-    // Create a new Date object for the current time
     const now = new Date();
-  
-    // Calculate local time in UTC
     const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  
-    // Create a new Date object for the local time in the given timezone
-    const localTime = new Date(utc + (timezoneOffsetInSeconds * 1000));
+    const localTime = new Date(utc + (timezoneOffsetInSeconds * 1000)); // Convert into local time
   
     // Format the date and time
     const day = localTime.getDate();
@@ -34,18 +28,16 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
     const year = localTime.getFullYear();
     const hours = localTime.getHours();
     const minutes = localTime.getMinutes();
-  
-    // Add leading zero to minutes and hours if necessary
-    const formattedHours = hours < 10 ? `0${hours}` : hours;
+
+    const formattedHours = hours < 10 ? `0${hours}` : hours; // Add leading zero to minutes and hours if necessary
     const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-  
-    // Array of month names
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  
-    // Get the month name
-    const monthName = monthNames[monthIndex];
-  
-    return `Date: ${day} ${monthName} ${year} <br /> Time: ${formattedHours}:${formattedMinutes}`;
+    const monthName = monthNames[monthIndex]; // Get month name
+    return [
+      `Date: ${day} ${monthName} ${year} `,
+      <br key="line-break" />,
+      `Time: ${formattedHours}:${formattedMinutes}`
+    ];
   };
   
 
@@ -93,7 +85,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
         </div>
 
         {/* Additional weather details row */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-2">
           <div className="flex flex-col items-center">
             <WiRain className="text-blue-400 text-3xl md:text-4xl" />
             <span className="text-xs md:text-sm mt-2">High: {Math.round(cityData.main.temp_max)}°</span>
@@ -107,9 +99,21 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit }) => {
             <WiHumidity className="text-blue-400 text-3xl md:text-4xl" />
             <span className="text-xs md:text-sm mt-2">Humidity: {cityData.main.humidity}%</span>
           </div>
+          {/* Visibility */}
+        <div className="flex flex-col items-center">
+          <WiCloud className="text-gray-400 text-3xl md:text-4xl" />
+          <span className="text-xs md:text-sm mt-2">Visibility:   
+           {isCelsius ? Math.round(cityData.visibility) / 1000 + ' km' : (Math.round(cityData.visibility) * 0.000621371).toFixed(1) + ' mi'}
+          </span>
+        </div>
+        {/* UV Index */}
+        <div className="flex flex-col items-center">
+          <WiSunrise className="text-yellow-500 text-3xl md:text-4xl" />
+          
+        </div>
           <div className="flex flex-col items-center">
             <WiMoonAltNew className="text-blue-400 text-3xl md:text-4xl" />
-          <div className="text-xs md:text-sm mt-2" dangerouslySetInnerHTML={{ __html: getCurrentDateTime(cityData.timezone) }} />
+          <div className="text-xs md:text-sm mt-2">{getCurrentDateTime(cityData.timezone)}</div> 
         </div>
         </div>
       </div>
