@@ -42,7 +42,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   };
 
   return (
-    <div className="relative bg-white bg-opacity-75 rounded-lg shadow-lg overflow-hidden w-full p-4 lg:max-w-3xl lg:mx-auto">
+    <div className="relative bg-white bg-opacity-80 rounded-lg shadow-lg overflow-hidden w-full p-4 lg:max-w-3xl lg:mx-auto">
       {/* Search bar row */}
     <form onSubmit={handleFormSubmit} className="mb-4 w-full">
       <div className="relative">
