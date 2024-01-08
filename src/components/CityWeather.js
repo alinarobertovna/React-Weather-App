@@ -44,10 +44,11 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   const getWeatherImageUrl = (weatherCondition) => {
     const weatherImages = {
       'Rain': '/rainy.jpg',
-      'Clear': 'url-to-sunny-image.jpg',
-      'Clouds': 'url-to-cloudy-image.jpg',
+      'Clear': '/clear.jpg',
+      'Clouds': '/clouds.jpg',
       'Snow': '/snow.jpg',
-      'Windy': '/windy.jpg'
+      'Windy': '/windy.jpg',
+      'Smoke': '/smoke.jpg'
       // ... add more conditions and images as needed
     };
 
