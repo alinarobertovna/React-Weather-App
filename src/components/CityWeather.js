@@ -16,7 +16,6 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   };
 
   const getCurrentDateTime = (timezoneOffsetInSeconds) => {
-    // Ensure timezoneOffsetInSeconds is a number
     if (typeof timezoneOffsetInSeconds !== 'number') {
       return 'Invalid timezone data';
     }
@@ -41,18 +40,72 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     return `${day} ${monthName} ${formattedHours}:${formattedMinutes}`;
   };
 
-  const getWeatherImageUrl = (weatherCondition) => {
-    const weatherImages = {
-      'Rain': '/rainy.jpg',
-      'Clear': '/clear.jpg',
-      'Clouds': '/clouds.jpg',
-      'Snow': '/snow.jpg',
-      'Windy': '/windy.jpg',
-      'Smoke': '/smoke.jpg'
-      // ... add more conditions and images as needed
-    };
+  const CityIllustrations = {
+    'Moscow': '/images/moscow.jpg',
+    'New York': '/images/new york.jpg',
+    'Toronto': '/images/toronto.jpg',
+    'Dubai': '/images/dubai.jpg',
+    'San Francisco': '/images/san-fran.jpg',
+    'Cairo': '/images/cairo.jpg',
+    'Berlin': '/images/berlin.jpg',
+    'Paris': '/images/paris.jpg',
+    'Rome': '/images/rome.jpg',
+    'Venice': '/images/venice.jpg',
+    'London': '/images/london.jpg',
+    'Cancún' : '/images/mexico.jpg',
+    'Taipei': '/images/taipei.jpg',
+    'Hong Kong' : '/images/hongkong.jpg',
+    'Las Vegas':'/images/las vegas.jpg',
+    'Athens': '/images/athens.jpg',
+    'Rio de Janeiro': '/images/rio.jpg',
+    'Sydney': '/images/sydney.jpg',
+    'Bali': '/images/bali.jpg',
+    
+    // Add more city names and corresponding illustration paths as needed
+  };
+  
+  const CountryIllustrations = {
+    'RU': '/images/winter mountain.jpg',
+    'US': '/images/usa.jpg',
+    'FI': '/images/finland.jpg',
+    'PE' : '/images/peru.jpg',
+    'VN': '/images/vietnam.jpg',
+    'GR': '/images/greece.jpg',
+    'AU': '/images/koala.jpg',
+    'AF': '/images/afganistan.jpg',
+    'ES': 'images/spain.jpg',
+    'CY' : '/images/cyprus.jpg',
+    'FR' : '/images/france.jpg',
+    'AR': '/images/argentina.jpg',
+    'BE': '/images/belgium.jpg',
+    'CA': '/images/canada.jpg',
+    'IR': '/images/iran.jpg',
+    'NL': '/images/nl.jpg',
+    'KR': '/images/korea.jpg',
+    'IT': '/images/italy.jpg',
+    'IN': '/images/agra.jpg',
+    'CU': '/images/cuba.jpg',
+    'SG': '/images/hongkong.jpg',
+    'CN': '/images/panda.jpg',
+    'LK': '/images/sri lanka.jpg',
+    'KE': '/images/elephant.jpg',
+    'NG': '/images/african family.jpg',
+    'NE': '/images/tiger.jpg',
+    'TZ': '/images/giraffe.jpg',
+    'NA': '/images/giraffe.jpg',
+    // Add more country names and corresponding illustration paths as needed
+  };
+  
+  const DefaultIllustration = '/default-illustration.jpg';
 
-    return weatherImages[weatherCondition] || '/turbine.jpg';
+  const getIllustration = (cityName, countryName) => {
+    if (CityIllustrations[cityName]) {
+      return CityIllustrations[cityName];
+    } else if (CountryIllustrations[countryName]) {
+      return CountryIllustrations[countryName];
+    } else {
+      return DefaultIllustration;
+    }
   };
 
   return (
@@ -107,10 +160,11 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
 
           {/* Weather Illustration */}
           <img
-            src={getWeatherImageUrl(cityData.weather[0].main)}
+            src={getIllustration(cityData.name, cityData.sys.country)}
             alt="Weather Illustration"
             className="mx-auto object-fill h-60 w-120"
           />
+          <br></br>
 
           {/* Additional weather details row */}
           <div className="grid grid-cols-2 gap-4">
