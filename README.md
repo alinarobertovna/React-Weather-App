@@ -41,5 +41,5 @@ Start the project:
 
 Open your web browser and visit http://localhost:3000 to view the website locally.
 
-Live website can be seen here: https://weatherapp-jg5k.onrender.com/
+Live website can be seen here: https://react-weather-app-nine-smoky.vercel.app/
 
