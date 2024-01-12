@@ -61,7 +61,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'Sydney': '/images/sydney.jpg',
     'Bali': '/images/bali.jpg',
     
-    // Add more city names and corresponding illustration paths as needed
+    
   };
   
   const CountryIllustrations = {
@@ -92,7 +92,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'NE': '/images/tiger.jpg',
     'TZ': '/images/giraffe.jpg',
     'NA': '/images/giraffe.jpg',
-    // Add more country names and corresponding illustration paths as needed
+    
   };
   
   const DefaultIllustration = '/images/default.jpg';
