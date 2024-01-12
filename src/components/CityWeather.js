@@ -89,14 +89,13 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'CN': '/images/panda.jpg',
     'LK': '/images/sri lanka.jpg',
     'KE': '/images/elephant.jpg',
-    'NG': '/images/african family.jpg',
     'NE': '/images/tiger.jpg',
     'TZ': '/images/giraffe.jpg',
     'NA': '/images/giraffe.jpg',
     // Add more country names and corresponding illustration paths as needed
   };
   
-  const DefaultIllustration = '/default-illustration.jpg';
+  const DefaultIllustration = '/images/default.jpg';
 
   const getIllustration = (cityName, countryName) => {
     if (CityIllustrations[cityName]) {
