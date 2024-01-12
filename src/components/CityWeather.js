@@ -41,30 +41,30 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   };
 
   const CityIllustrations = {
-    'Moscow': '/images/moscow.jpg',
-    'New York': '/images/new york.jpg',
-    'Toronto': '/images/toronto.jpg',
-    'Dubai': '/images/dubai.jpg',
-    'San Francisco': '/images/san-fran.jpg',
-    'Cairo': '/images/cairo.jpg',
-    'Berlin': '/images/berlin.jpg',
-    'Paris': '/images/paris.jpg',
-    'Rome': '/images/rome.jpg',
-    'Venice': '/images/venice.jpg',
-    'London': '/images/london.jpg',
-    'Cancún' : '/images/mexico.jpg',
-    'Taipei': '/images/taipei.jpg',
-    'Hong Kong' : '/images/hongkong.jpg',
-    'Las Vegas':'/images/las vegas.jpg',
-    'Athens': '/images/athens.jpg',
-    'Rio de Janeiro': '/images/rio.jpg',
-    'Sydney': '/images/sydney.jpg',
+    'Moscow': '/moscow.jpg',
+    'New York': '/new york.jpg',
+    'Toronto': '/toronto.jpg',
+    'Dubai': '/dubai.jpg',
+    'San Francisco': '/san-fran.jpg',
+    'Cairo': '/cairo.jpg',
+    'Berlin': '/berlin.jpg',
+    'Paris': '/paris.jpg',
+    'Rome': '/rome.jpg',
+    'Venice': '/venice.jpg',
+    'London': '/london.jpg',
+    //'Cancún' : '/images/mexico.jpg',
+    //'Taipei': '/images/taipei.jpg',
+    //'Hong Kong' : '/images/hongkong.jpg',
+    //'Las Vegas':'/images/las vegas.jpg',
+    //'Athens': '/images/athens.jpg',
+    //'Rio de Janeiro': '/images/rio.jpg',
+    //'Sydney': '/images/sydney.jpg',
     'Bali': '/images/bali.jpg',
     
     
   };
   
-  const CountryIllustrations = {
+  /*const CountryIllustrations = {
     'RU': '/images/winter mountain.jpg',
     'US': '/images/usa.jpg',
     'FI': '/images/finland.jpg',
@@ -92,16 +92,15 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'NE': '/images/tiger.jpg',
     'TZ': '/images/giraffe.jpg',
     'NA': '/images/giraffe.jpg',
-    
-  };
+  };*/
   
   const DefaultIllustration = '/images/default2.jpg';
 
   const getIllustration = (cityName, countryName) => {
     if (CityIllustrations[cityName]) {
       return CityIllustrations[cityName];
-    } else if (CountryIllustrations[countryName]) {
-      return CountryIllustrations[countryName];
+    //} else if (CountryIllustrations[countryName]) {
+      //return CountryIllustrations[countryName];
     } else {
       return DefaultIllustration;
     }
