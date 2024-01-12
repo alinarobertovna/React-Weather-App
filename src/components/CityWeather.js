@@ -58,7 +58,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     //'Las Vegas':'/images/las vegas.jpg',
     //'Athens': '/images/athens.jpg',
     //'Rio de Janeiro': '/images/rio.jpg',
-    //'Sydney': '/images/sydney.jpg',
+    'Sydney': '/sydney.jpg',
     'Bali': '/bali.jpg',
     
     
