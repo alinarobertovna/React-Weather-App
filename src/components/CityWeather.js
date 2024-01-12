@@ -54,53 +54,53 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'London': '/london.jpg',
     //'Cancún' : '/images/mexico.jpg',
     //'Taipei': '/images/taipei.jpg',
-    //'Hong Kong' : '/images/hongkong.jpg',
+    'Hong Kong' : '/skyline.jpg',
     //'Las Vegas':'/images/las vegas.jpg',
     //'Athens': '/images/athens.jpg',
     //'Rio de Janeiro': '/images/rio.jpg',
     //'Sydney': '/images/sydney.jpg',
-    'Bali': '/images/bali.jpg',
+    'Bali': '/bali.jpg',
     
     
   };
   
-  /*const CountryIllustrations = {
-    'RU': '/images/winter mountain.jpg',
-    'US': '/images/usa.jpg',
-    'FI': '/images/finland.jpg',
-    'PE' : '/images/peru.jpg',
-    'VN': '/images/vietnam.jpg',
-    'GR': '/images/greece.jpg',
-    'AU': '/images/koala.jpg',
-    'AF': '/images/afganistan.jpg',
-    'ES': 'images/spain.jpg',
-    'CY' : '/images/cyprus.jpg',
-    'FR' : '/images/france.jpg',
-    'AR': '/images/argentina.jpg',
-    'BE': '/images/belgium.jpg',
-    'CA': '/images/canada.jpg',
-    'IR': '/images/iran.jpg',
-    'NL': '/images/nl.jpg',
-    'KR': '/images/korea.jpg',
-    'IT': '/images/italy.jpg',
-    'IN': '/images/agra.jpg',
-    'CU': '/images/cuba.jpg',
-    'SG': '/images/hongkong.jpg',
-    'CN': '/images/panda.jpg',
-    'LK': '/images/sri lanka.jpg',
-    'KE': '/images/elephant.jpg',
-    'NE': '/images/tiger.jpg',
-    'TZ': '/images/giraffe.jpg',
-    'NA': '/images/giraffe.jpg',
-  };*/
+  const CountryIllustrations = {
+    //'RU': '/images/winter mountain.jpg',
+    'US': '/usa.jpg',
+    'FI': '/finland.jpg',
+    //'PE' : '/images/peru.jpg',
+    //'VN': '/images/vietnam.jpg',
+    //'GR': '/images/greece.jpg',
+    //'AU': '/images/koala.jpg',
+    //'AF': '/images/afganistan.jpg',
+    'ES': 'spain.jpg',
+    //'CY' : '/images/cyprus.jpg',
+    'FR' : 'france.jpg',
+    //'AR': '/images/argentina.jpg',
+    //'BE': '/images/belgium.jpg',
+    'CA': 'canada.jpg',
+    //'IR': '/images/iran.jpg',
+    //'NL': '/images/nl.jpg',
+    //'KR': '/images/korea.jpg',
+    //'IT': '/images/italy.jpg',
+    'ID': '/bali.jpg',
+    //'CU': '/images/cuba.jpg',
+    'SG': '/skyline.jpg',
+    //'CN': '/images/panda.jpg',
+    //'LK': '/images/sri lanka.jpg',
+    //'KE': '/images/elephant.jpg',
+    //'NE': '/images/tiger.jpg',
+    //'TZ': '/images/giraffe.jpg',
+    //'NA': '/images/giraffe.jpg',
+  };
   
   const DefaultIllustration = '/images/default2.jpg';
 
   const getIllustration = (cityName, countryName) => {
     if (CityIllustrations[cityName]) {
       return CityIllustrations[cityName];
-    //} else if (CountryIllustrations[countryName]) {
-      //return CountryIllustrations[countryName];
+    } else if (CountryIllustrations[countryName]) {
+      return CountryIllustrations[countryName];
     } else {
       return DefaultIllustration;
     }
