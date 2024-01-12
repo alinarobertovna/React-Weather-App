@@ -95,7 +95,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     
   };
   
-  const DefaultIllustration = '/images/default.jpg';
+  const DefaultIllustration = '/images/default2.jpg';
 
   const getIllustration = (cityName, countryName) => {
     if (CityIllustrations[cityName]) {

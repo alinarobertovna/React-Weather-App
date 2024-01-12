@@ -2,7 +2,6 @@ import React from 'react';
 
 const FiveDayForecast = ({ forecastData, isCelsius, error }) => {
   if (error) {
-    // Return null or an empty fragment when there's an error
     return null;
   }
   if (!forecastData || !forecastData.list) {
