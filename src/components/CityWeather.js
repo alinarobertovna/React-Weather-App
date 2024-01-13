@@ -60,7 +60,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'Rio de Janeiro': '/rio.jpg',
     'Sydney': '/sydney.jpg',
     'Madrid': '/madrid.jpg',
-    'São Paulo': '/sao paolo',
+    'São Paulo': '/sao paolo,jpg',
     'Agra': 'agra.jpg',
     'Ahmedabad': 'ahmedabad.jpg',
     'Miami': 'miami.jpg'
@@ -96,10 +96,11 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'NA': '/safari.jpg',
     'MX': '/mexico.jpg',
     'IE': '/ireland.jpg',
-    'MV': '/coconut.jpg'
+    'MV': '/coconut.jpg',
+    'IL': '/israel.jpg'
   };
   
-  const DefaultIllustration = '/images/default2.jpg';
+  const DefaultIllustration = '/default2.jpg';
 
   const getIllustration = (cityName, countryName) => {
     if (CityIllustrations[cityName]) {
