@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWind, faTemperatureHigh, faClock, faDroplet } from '@fortawesome/free-solid-svg-icons';
 import { BsSearch, BsGeoAlt, BsExclamationCircleFill } from 'react-icons/bs';
+import './tailwindstyles.css';
 
 const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error }) => {
   const [cityInput, setCityInput] = useState('');
@@ -67,7 +68,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   };
   
   const CountryIllustrations = {
-    //'RU': '/images/winter mountain.jpg',
+    'RU': '/winter.jpg',
     'US': '/usa.jpg',
     'FI': '/finland.jpg',
     'PE' : '/peru.jpg',
@@ -75,15 +76,13 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'GR': '/greece.jpg',
     'AU': '/koala.jpg',
     'AF': 'af.jpg',
-    'ES': 'spain.jpg',
-    //'CY' : '/images/cyprus.jpg',
-    'FR' : 'france.jpg',
-    //'AR': '/images/argentina.jpg',
+    'ES': '/spain.jpg',
+    'CY' : '/sand castle.jpg',
+    'FR' : '/france.jpg',
     'BE': '/europe.jpg',
-    'CA': 'canada.jpg',
+    'CA': '/canada.jpg',
     'IR': '/iran.jpg',
     'NL': '/nl.jpg',
-    //'KR': '/images/korea.jpg',
     'IT': '/italy.jpg',
     'ID': '/bali.jpg',
     'CU': '/cuba.jpg',
@@ -97,7 +96,11 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
     'MX': '/mexico.jpg',
     'IE': '/ireland.jpg',
     'MV': '/coconut.jpg',
-    'IL': '/israel.jpg'
+    'IL': '/israel.jpg',
+    'AQ': '/polar bear.jpg',
+    'AT': '/baidarka.jpg',
+    'CH': '/lake.jpg',
+    'TR': '/market.jpg'
   };
   
   const DefaultIllustration = '/default2.jpg';
@@ -113,7 +116,7 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
   };
 
   return (
-    <div className="mx-auto my-10 p-4 bg-white rounded-lg shadow-lg" style={{ width: '100%', maxWidth: '600px' }}>
+    <div className="container">
       {/* Search bar row */}
       <form onSubmit={handleFormSubmit} className="mb-4 w-full">
         <div className="relative">
@@ -122,11 +125,11 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
             value={cityInput}
             onChange={handleCityInputChange}
             placeholder="Enter city"
-            className="pl-2 pr-10 py-2 border border-gray-300 rounded-lg outline-0 w-full"
+            className="search-input"
           />
           <button
             type="submit"
-            className="absolute inset-y-0 right-0 bg-blue-500 text-white px-3 rounded-r-lg"
+            className="search-button"
           >
             <BsSearch />
           </button>
@@ -134,19 +137,19 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
       </form>
 
       {/* Display Error Message */}
-      {error && <div className="flex items-center justify-center"><BsExclamationCircleFill className="mr-2" /> {error}</div>}
+      {error && <div className="error-msg"><BsExclamationCircleFill className="mr-2" /> {error}</div>}
 
       {/* Weather details, rendered only if cityData is available */}
       {cityData && !error && (
         <div className="text-gray-700">
           {/* Location and Temperature Unit Toggle */}
-          <div className="flex justify-between items-center flex-wrap sm:flex-nowrap mb-4">
+          <div className="location-units-row">
             <div className="flex items-center">
-              <BsGeoAlt className="text-black-400 text-3xl mr-3" />
-              <span className="font-semibold text-lg">{cityData.name}, {cityData.sys.country}</span>
+              <BsGeoAlt className="location-icon" />
+              <span className="location-text">{cityData.name}, {cityData.sys.country}</span>
             </div>
-            <div className="flex items-center mt-2 sm:mt-0">
-              <button onClick={toggleTempUnit} className="text-gray-600 font-semibold text-lg">
+            <div className="unit-toggle">
+              <button onClick={toggleTempUnit} className="unit-toggle-btn">
                 {isCelsius ? '°F' : '°C'}
               </button>
             </div>
@@ -154,40 +157,40 @@ const CityWeather = ({ cityData, handleSubmit, isCelsius, toggleTempUnit, error 
 
           {/* Temperature & Date row */}
           <div className="my-4 text-center">
-            <span className="text-gray-800 font-bold text-4xl">{Math.round(cityData.main.temp)}</span>
-            <span className="text-gray-800 font-semibold text-xl">{isCelsius ? '°C' : '°F'}</span>
-            <div className="text-gray-600 text-sm">
+            <span className="temp-row">{Math.round(cityData.main.temp)}</span>
+            <span className="unit">{isCelsius ? '°C' : '°F'}</span>
+            <div className="real-temp-row">
               Feels like: {Math.round(cityData.main.feels_like)}{isCelsius ? '°C' : '°F'}
             </div>
-            <div className="text-gray-600 text-sm">{cityData.weather[0].main}</div>
+            <div className="weather-desc">{cityData.weather[0].main}</div>
           </div>
 
           {/* Weather Illustration */}
           <img
             src={getIllustration(cityData.name, cityData.sys.country)}
             alt="Weather Illustration"
-            className="mx-auto object-fill h-60 w-120"
+            className="illustration"
           />
           <br></br>
 
           {/* Additional weather details row */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col items-center">
+          <div className="details-panel">
+            <div className="details-panel-item">
               <FontAwesomeIcon icon={faTemperatureHigh} size="lg" />
-              <span className="text-xs mt-2">High: {Math.round(cityData.main.temp_max)}°</span>
+              <span className="details-panel-item-desc">High: {Math.round(cityData.main.temp_max)}°</span>
               <span className="text-xs">Low: {Math.round(cityData.main.temp_min)}°</span>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="details-panel-item">
               <FontAwesomeIcon icon={faWind} size="lg" />
-              <span className="text-xs mt-2">Wind: {Math.round(cityData.wind.speed)} {isCelsius ? 'm/s' : 'mph'}</span>
+              <span className="details-panel-item-desc">Wind: {Math.round(cityData.wind.speed)} {isCelsius ? 'm/s' : 'mph'}</span>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="details-panel-item">
               <FontAwesomeIcon icon={faDroplet} size="lg" />
-              <span className="text-xs mt-2">Humidity: {cityData.main.humidity}%</span>
+              <span className="details-panel-item-desc">Humidity: {cityData.main.humidity}%</span>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="details-panel-item">
               <FontAwesomeIcon icon={faClock} size="lg" />
-              <span className="text-xs mt-2">{getCurrentDateTime(cityData.timezone)}</span>
+              <span className="details-panel-item-desc">{getCurrentDateTime(cityData.timezone)}</span>
             </div>
           </div>
         </div>

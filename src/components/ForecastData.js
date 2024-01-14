@@ -1,4 +1,5 @@
 import React from 'react';
+import './tailwindstyles.css';
 
 const FiveDayForecast = ({ forecastData, isCelsius, error }) => {
   if (error) {
@@ -34,12 +35,12 @@ const FiveDayForecast = ({ forecastData, isCelsius, error }) => {
   };
 
   return (
-    <div className="bg-white bg-opacity-80 rounded-lg shadow-lg overflow-hidden p-4 my-4">
-      <h2 className="text-2xl font-semibold mb-4">5-Day Forecast</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div className="forecast-container">
+      <h2 className="forecast-title">5-Day Forecast</h2>
+      <div className="forecast-grid">
         {dailyForecast.map((day, index) => (
-          <div key={index} className="flex flex-col items-center text-center">
-            <span className="text-lg font-semibold">{formatDate(new Date(day.dt * 1000))}</span>
+          <div key={index} className="forecast-item">
+            <span className="forecast-date">{formatDate(new Date(day.dt * 1000))}</span>
             <img src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt="weather icon" />
             <span className="text-sm">{Math.round(day.main.temp)}°{isCelsius ? 'C' : 'F'}</span>
             <span className="text-sm">Feels like: {Math.round(day.main.feels_like)}°{isCelsius ? 'C' : 'F'}</span>

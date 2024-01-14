@@ -1,0 +1,93 @@
+
+.container {
+    @apply mx-auto my-10 p-4 bg-white rounded-lg shadow-lg;
+}
+
+.search-input {
+    @apply pl-2 pr-10 py-2 border border-gray-300 rounded-lg outline-0 w-full;
+}
+
+.search-button {
+    @apply absolute inset-y-0 right-0 bg-blue-500 text-white px-3 rounded-r-lg;
+}
+
+.error-msg {
+    @apply flex items-center justify-center;
+}
+
+.location-units-row {
+    @apply flex justify-between items-center flex-wrap sm:flex-nowrap mb-4;
+}
+
+.location-icon {
+    @apply text-black text-3xl mr-3;
+}
+
+.location-text {
+    @apply font-semibold text-lg;
+}
+
+.unit-toggle {
+    @apply flex items-center mt-2 sm:mt-0;
+}
+
+.unit-toggle-btn {
+    @apply text-gray-600 font-semibold text-lg;
+}
+
+.temp-row {
+    @apply text-gray-800 font-bold text-4xl;
+}
+
+.unit {
+    @apply text-gray-800 font-semibold text-xl;
+}
+
+.real-temp-row {
+    @apply text-gray-600 text-sm;
+}
+
+.weather-desc {
+    @apply text-gray-600 text-sm;
+}
+
+.illustration {
+    @apply mx-auto object-fill h-60;
+}
+
+.details-panel {
+    @apply grid grid-cols-2 gap-4;
+}
+
+.details-panel-item {
+    @apply flex flex-col items-center;
+}
+
+.details-panel-item-desc {
+    @apply text-xs mt-2;
+}
+
+.forecast-container {
+    @apply bg-white bg-opacity-80 rounded-lg shadow-lg overflow-hidden p-4 my-4;
+}
+
+.forecast-title {
+    @apply text-2xl font-semibold mb-4;
+}
+
+.forecast-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4;
+}
+
+.forecast-item {
+    @apply flex flex-col items-center text-center;
+}
+
+.forecast-date {
+    @apply text-lg font-semibold;
+}
+
+
+
+
+
